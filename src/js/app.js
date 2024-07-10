@@ -1,6 +1,12 @@
-// TODO: write your code here
-import sum from './basic';
+export default class ErrorRepository {
+    constructor() {
+        this.repError = new Map([[500, 'server error'], [502, 'gateway error']]);
+    }
 
-console.log('worked');
-
-console.log(sum([1, 2]));
+    translate(code) {
+        if (this.repError.has(code)) {
+            return this.repError.get(code)
+        }
+        return 'unknown error';
+    }
+}
